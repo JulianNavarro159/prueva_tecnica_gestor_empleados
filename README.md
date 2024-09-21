@@ -25,29 +25,30 @@ Este proyecto es una API RESTful desarrollada en Laravel que permite la gestión
 ## Instalación
 1. Clona el repositorio:
    ```bash
-   git clone https://github.com/tu-usuario/tu-repositorio.git
+   git clone https://github.com/usuario/repositorio.git
    cd tu-repositorio
 
-## Instala las dependencias con Composer:
+2. Instala las dependencias con Composer:
+   ```bash
+   composer install
 
-composer install
-Configura el archivo .env con tus credenciales de base de datos.
+3. Configura el archivo '.env' con tus credenciales de base de datos.
 
-Ejecuta las migraciones y los seeders:
+4. Ejecuta las migraciones y los seeders:
+   ```bash
+   php artisan migrate --seed
 
-php artisan migrate --seed
-
-Uso
+## Uso
 
 Una vez instalada la aplicación, puedes probar los endpoints con herramientas como Postman o Insomnia.
 
 Para iniciar el servidor de desarrollo, ejecuta:
+   ```bash
+   php artisan serve --port=8001
 
-php artisan serve
+La API estará disponible en http://127.0.0.1:8001.
 
-La API estará disponible en http://localhost:8000.
-
-Estructura del Proyecto
+## Estructura del Proyecto
 
 app/Http/Controllers: Controladores de la API.
 app/Models: Modelos de las entidades.
