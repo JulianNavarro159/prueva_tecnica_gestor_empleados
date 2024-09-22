@@ -9,6 +9,24 @@
     <div class="card-body">
         <h5 class="card-title">Listado de Empleados</h5>
 
+        <!-- Mensaje de éxito -->
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <!-- Mensajes de error de validación -->
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <!-- Formulario de filtros -->
         <form method="GET" action="{{ route('employees.index') }}" class="mb-3">
             <div class="row">
@@ -37,15 +55,14 @@
         </form>
 
         <hr>
-        <p class="card-text">
-            <div class="table table-responsive">
+        <div class="table table-responsive">
             @if(isset($employees) && count($employees) > 0)
                 <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>Nombre</th>
                             <th>Departamento</th>
-                            <th>Salario Comparativo</th> <!-- Nueva columna -->
+                            <th>Salario Comparativo</th>
                             <th>Detalle</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
@@ -89,6 +106,7 @@
                         @endforeach
                     </tbody>
                 </table>
+
                 <!-- Paginación -->
                 <div class="d-flex justify-content-center">
                     <ul class="pagination">
@@ -113,12 +131,11 @@
                 <p>No hay empleados disponibles.</p>
             @endif
 
-            
-                @if(isset($error))
-                    <p class="text-danger">{{ $error }}</p>
-                @endif
-            </div>
-        </p>
+            @if(isset($error))
+                <p class="text-danger">{{ $error }}</p>
+            @endif
+        </div>
+
         <p>
             <a href="{{ route('employees.create') }}" class="btn btn-primary">
                 <span class="fa-sharp fa-solid fa-user-plus"></span> Agregar empleado
